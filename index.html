@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yuvateja Sainadh | GenAI Developer</title>
+  <meta name="description" content="Work of a GenAI Developer — portfolio, projects, and contact." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg2: #0b1120;
+      --card: rgba(10, 16, 32, 0.72);
+      --card-border: rgba(120, 190, 255, 0.18);
+      --text: #e8f1ff;
+      --muted: #a9b8d4;
+      --accent: #5eead4;
+      --accent2: #60a5fa;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.14), transparent 30%),
+        radial-gradient(circle at 20% 20%, rgba(94, 234, 212, 0.10), transparent 25%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0 26px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(96, 165, 250, 0.18));
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      padding: 20px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      line-height: 0.96;
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subhead {
+      margin: 18px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(94, 234, 212, 0.35);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(94,234,212,0.18), rgba(96,165,250,0.18));
+      border-color: rgba(94, 234, 212, 0.25);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .stat .value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      min-height: 240px;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.35);
+    }
+
+    .card .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--accent);
+      border: 1px solid rgba(94, 234, 212, 0.24);
+      background: rgba(94, 234, 212, 0.08);
+      border-radius: 999px;
+      padding: 7px 12px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .card ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .contact-box, .form-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(5, 8, 22, 0.6);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+    }
+
+    input:focus, textarea:focus {
+      border-color: rgba(94, 234, 212, 0.40);
+      box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.08);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .contact-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 18px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 18px;
+      }
+
+      .subhead {
+        font-size: 1rem;
+      }
+
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="noise"></div>
+
+  <div class="wrap">
+    <header class="nav">
+      <a class="brand" href="#home">
+        <div class="logo">GD</div>
+        <div>
+          Yuvateja Sainadh<br />
+          <span style="color: var(--muted); font-weight: 500; font-size: 0.92rem;">GenAI Developer</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="home" class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> work.gd — Work of GenAI Developer</div>
+          <h1>
+            Building the<br />
+            <span class="gradient-text">future with AI</span>.
+          </h1>
+          <p class="subhead">
+            I design and build creative GenAI experiences, intelligent tools, and useful digital products.
+            This space is my experimental portfolio, where ideas turn into working demos.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="value">01</div>
+            <div class="label">GenAI portfolio concept with a futuristic landing page.</div>
+          </div>
+          <div class="stat">
+            <div class="value">02</div>
+            <div class="label">Animated particle network inspired by AI connections.</div>
+          </div>
+          <div class="stat">
+            <div class="value">03</div>
+            <div class="label">Showcase area for projects, experiments, and demos.</div>
+          </div>
+          <div class="stat">
+            <div class="value">04</div>
+            <div class="label">Simple contact form for messages and opportunities.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Replace this text with your real bio, skills, and focus areas.</p>
+      </div>
+
+      <div class="card">
+        <div class="tag">Who I Am</div>
+        <h3>GenAI Developer | Builder | Explorer</h3>
+        <p>
+          I like creating modern web experiences and AI-powered solutions that feel practical, fast, and creative.
+          My focus is on Generative AI, automation, and clean frontend design.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>A few sample cards you can replace with your real work.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="tag">AI Assistant</div>
+          <h3>Smart Chat Helper</h3>
+          <p>
+            A conversational assistant for answering questions, summarizing content, and helping with daily tasks.
+          </p>
+          <ul>
+            <li>Prompt engineering</li>
+            <li>Context-aware replies</li>
+            <li>Clean UI integration</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Automation</div>
+          <h3>Workflow Generator</h3>
+          <p>
+            A productivity tool that turns plain instructions into structured tasks, reminders, and action steps.
+          </p>
+          <ul>
+            <li>Task breakdown</li>
+            <li>Smart recommendations</li>
+            <li>Fast user flow</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Creative Web</div>
+          <h3>Portfolio Microsite</h3>
+          <p>
+            A polished personal page with motion, modern styling, and a strong identity for your online presence.
+          </p>
+          <ul>
+            <li>Responsive layout</li>
+            <li>Particle animation</li>
+            <li>Brand-first design</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Use this form to receive messages, collaboration requests, or internship opportunities.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <div class="tag">Let’s Connect</div>
+          <h3>Open for projects and opportunities</h3>
+          <p>
+            Add your email address, GitHub, LinkedIn, or any other contact channel here.
+            You can connect this form to Formspree, Netlify Forms, or your own backend later.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:youremail@example.com">youremail@example.com</a>
+            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub Profile</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noreferrer">LinkedIn Profile</a>
+          </div>
+        </div>
+
+        <div class="form-box">
+          <form action="https://formspree.io/f/your_form_id" method="POST">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Send Message</button>
+            <div class="form-note">
+              Replace <code>your_form_id</code> with your own Formspree ID, or connect this form to any backend you prefer.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Yuvateja Sainadh · Work of GenAI Developer
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+
+    let w, h, particles;
+
+    function resize() {
+      w = canvas.width = window.innerWidth * devicePixelRatio;
+      h = canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      initParticles();
+    }
+
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function initParticles() {
+      const count = Math.min(120, Math.floor((window.innerWidth * window.innerHeight) / 14000));
+      particles = Array.from({ length: count }, () => ({
+        x: rand(0, w),
+        y: rand(0, h),
+        vx: rand(-0.22, 0.22) * devicePixelRatio,
+        vy: rand(-0.22, 0.22) * devicePixelRatio,
+        r: rand(1.2, 2.6) * devicePixelRatio
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(94, 234, 212, 0.85)";
+        ctx.fill();
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 160 * devicePixelRatio) {
+            const alpha = 1 - dist / (160 * devicePixelRatio);
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(96, 165, 250, ${alpha * 0.22})`;
+            ctx.lineWidth = 1 * devicePixelRatio;
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
