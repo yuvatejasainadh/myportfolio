@@ -4,67 +4,24 @@
  */
 
 import React from 'react';
-import { motion, animate } from 'motion/react';
+import { motion } from 'motion/react';
 import { SOCIAL_LINKS } from '../constants';
 import { Button } from './ui/button';
-import { 
-  ExternalLink, 
-  Terminal, 
-  Activity, 
-  TrendingUp,
-  Target
-} from 'lucide-react';
-
-const AnimatedCounter = ({ value }: { value: number }) => {
-  const [count, setCount] = React.useState(0);
-  
-  React.useEffect(() => {
-    const controls = animate(0, value, {
-      duration: 2,
-      onUpdate: (latest) => setCount(Math.floor(latest)),
-      ease: "easeOut"
-    });
-    return () => controls.stop();
-  }, [value]);
-
-  return <>{count}</>;
-};
+import { ExternalLink, Terminal } from 'lucide-react';
 
 export const CompetitiveProgramming = () => {
   const cpLinks = SOCIAL_LINKS.filter(l => 
     ['LeetCode', 'CodeChef', 'HackerRank', 'Codeforces', 'GeeksforGeeks'].includes(l.name)
   );
 
-  const stats = [
-    { label: "Total Problems", value: 1000, suffix: "+", icon: <Target className="w-5 h-5" /> },
-    { label: "Global Ranking", value: 200000, suffix: "", icon: <TrendingUp className="w-5 h-5" /> },
-    { label: "Streaks", value: 100, suffix: "d", icon: <Activity className="w-5 h-5" /> },
-  ];
-
   return (
     <section id="cp" className="py-40 px-8 lg:px-24 bg-grad-soft text-foreground dark:text-white rounded-[4rem] xl:rounded-[8rem] mx-4 my-20 transition-colors duration-500 border border-border/50 dark:border-none shadow-2xl shadow-black/5 dark:shadow-none">
       <div className="max-w-[1800px] mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-32 gap-12">
-          <div className="space-y-4">
-            <span className="text-primary font-bold tracking-[0.2em] text-xs uppercase">Algorithms</span>
-            <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none">
-              Competitive <br/><span className="italic text-primary">Programming.</span>
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 w-full lg:w-auto">
-            {stats.map((stat, i) => (
-              <div key={i} className="space-y-2">
-                <div className="text-primary mb-2">{stat.icon}</div>
-                <div className="text-3xl md:text-4xl font-black italic text-foreground dark:text-white">
-                   <AnimatedCounter value={stat.value} />{stat.suffix}
-                </div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mb-16 md:mb-20 space-y-4">
+          <span className="text-primary font-bold tracking-[0.2em] text-xs uppercase">Algorithms</span>
+          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none">
+            Competitive <br/><span className="italic text-primary">Programming.</span>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -97,9 +54,9 @@ export const CompetitiveProgramming = () => {
               <div className="relative z-10 space-y-6">
                 {/* Platform Specific Visual (Simulated) */}
                 <div className="flex items-end gap-1 h-8 opacity-20 dark:opacity-20 group-hover:opacity-60 transition-opacity">
-                   {[40, 70, 50, 90, 60, 80].map((h, k) => (
-                     <div key={k} className="w-2 rounded-full bg-foreground dark:bg-white" style={{ height: `${h}%` }} />
-                   ))}
+                  {[40, 70, 50, 90, 60, 80].map((h, k) => (
+                    <div key={k} className="w-2 rounded-full bg-foreground dark:bg-white" style={{ height: `${h}%` }} />
+                  ))}
                 </div>
                 
                 <Button 
@@ -116,8 +73,6 @@ export const CompetitiveProgramming = () => {
             </motion.div>
           ))}
         </div>
-
-       
       </div>
     </section>
   );
