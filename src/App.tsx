@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { 
   Github, 
@@ -34,9 +34,10 @@ import { ProjectCard } from './components/ProjectCard';
 import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
 import { StaggeredWord } from './components/StaggeredWord';
-import Background3D from './components/Background3D';
 import { Button } from '@/components/ui/button';
 import { TooltipProvider } from '@/components/ui/tooltip';
+
+const Background3D = lazy(() => import('./components/Background3D'));
 
 const IconMap: Record<string, React.ReactNode> = {
   Github: <Github className="w-5 h-5" />,
@@ -123,7 +124,9 @@ export default function App() {
     <TooltipProvider>
       <div className="relative min-h-screen selection:bg-[#00A19B]/30 selection:text-brand-teal overflow-x-hidden bg-grad-soft transition-colors duration-500">
         <div className="theme-transition-gradient" />
-        <Background3D />
+        <Suspense fallback={null}>
+          <Background3D />
+        </Suspense>
         
         <motion.div 
           className="fixed top-0 left-0 right-0 h-[2px] bg-grad-primary z-[100] origin-left shadow-[0_0_10px_var(--primary)]"
@@ -227,7 +230,7 @@ export default function App() {
       {/* Image */}
       <div className="w-full aspect-square rounded-2xl overflow-hidden">
         <img
-          src="/ProfilePic.png"
+          src="/ProfilePic.webp"
           alt="Yuvateja Sainadh"
           width={480}
           height={480}
