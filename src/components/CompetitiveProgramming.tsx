@@ -4,16 +4,13 @@
  */
 
 import React from 'react';
-import { motion, useSpring, useTransform, animate } from 'motion/react';
+import { motion, animate } from 'motion/react';
 import { SOCIAL_LINKS } from '../constants';
 import { Button } from './ui/button';
 import { 
-  Trophy, 
   ExternalLink, 
   Terminal, 
   Activity, 
-  BarChart2, 
-  ChevronRight,
   TrendingUp,
   Target
 } from 'lucide-react';

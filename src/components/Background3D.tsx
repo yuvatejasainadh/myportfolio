@@ -1,17 +1,23 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 function Particles() {
   const ref = useRef<THREE.Points>(null!);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
   const sphere = useMemo(() => {
-    const count = window.innerWidth < 768 ? 2000 : 5000;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const count = isMobile ? 1200 : 3200;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const radius = 1.2;
@@ -27,8 +33,8 @@ function Particles() {
     return positions;
   }, []);
 
-  useFrame((state, delta) => {
-    if (ref.current) {
+  useFrame((_, delta) => {
+    if (ref.current && !document.hidden && !prefersReducedMotion) {
       ref.current.rotation.x -= delta / 10;
       ref.current.rotation.y -= delta / 15;
     }
@@ -53,7 +59,11 @@ function Particles() {
 export default function Background3D() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none opacity-50 dark:opacity-30">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas 
+        camera={{ position: [0, 0, 1] }} 
+        dpr={[1, 1.5]}
+        gl={{ powerPreference: 'low-power', antialias: false }}
+      >
         <Particles />
       </Canvas>
     </div>

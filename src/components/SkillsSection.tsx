@@ -24,7 +24,7 @@ export const SkillsSection = () => {
       <div className="max-w-[1800px] mx-auto">
         <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="space-y-4">
-            <span className="text-primary font-bold tracking-[0.2em] text-xs uppercase">Capabilites</span>
+            <span className="text-primary font-bold tracking-[0.2em] text-xs uppercase">Capabilities</span>
             <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-foreground leading-none transition-colors">
               My Technical <span className="bg-grad-primary bg-clip-text text-transparent italic">Arsenal.</span>
             </h2>

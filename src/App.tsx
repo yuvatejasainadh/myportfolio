@@ -4,31 +4,12 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { 
   Github, 
   Linkedin, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Download, 
-  Code, 
-  ExternalLink,
-  ChevronRight,
-  Menu,
-  X,
   ArrowUpRight,
-  Trophy,
-  TrendingUp,
-  BookOpen,
-  Activity,
-  Cpu,
-  Cloud,
-  Sparkles,
-  ShieldCheck,
-  Send,
-  Zap,
-  Globe
+  Zap 
 } from 'lucide-react';
 import {
   SiLeetcode,
@@ -38,8 +19,6 @@ import {
   SiHackerrank
 } from "react-icons/si";
 import { TypeAnimation } from 'react-type-animation';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
   PERSONAL_INFO, 
   SOCIAL_LINKS, 
@@ -52,17 +31,12 @@ import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
 import { CompetitiveProgramming } from './components/CompetitiveProgramming';
 import { ProjectCard } from './components/ProjectCard';
+import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
 import { StaggeredWord } from './components/StaggeredWord';
 import Background3D from './components/Background3D';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-
-gsap.registerPlugin(ScrollTrigger);
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const IconMap: Record<string, React.ReactNode> = {
   Github: <Github className="w-5 h-5" />,
@@ -72,10 +46,6 @@ const IconMap: Record<string, React.ReactNode> = {
   SiHackerRank: <SiHackerrank className="w-5 h-5" />,
   SiCodeforces: <SiCodeforces className="w-5 h-5" />,
   SiGeeksforgeeks: <SiGeeksforgeeks className="w-5 h-5" />,
-  Cloud: <Cloud className="w-5 h-5" />,
-  Sparkles: <Sparkles className="w-5 h-5" />,
-  ShieldCheck: <ShieldCheck className="w-5 h-5" />,
-  Cpu: <Cpu className="w-5 h-5" />,
 };
 
 const EditorialHeading = ({ title, tag, subtitle }: { title: string; tag?: string; subtitle?: string }) => (
@@ -124,24 +94,9 @@ export default function App() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    
-    if (!isLoading) {
-      gsap.from(".reveal-item", {
-        y: 40,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".reveal-item",
-          start: "top 90%",
-        }
-      });
-    }
-    
+    const timer = setTimeout(() => setIsLoading(false), 1200);
     return () => clearTimeout(timer);
-  }, [isLoading]);
+  }, []);
 
   if (isLoading) {
     return (
@@ -178,8 +133,10 @@ export default function App() {
         {/* Global Navigation */}
         <Navbar />
 
-{/* Hero Section */}
-<section ref={heroRef} className="relative min-h-screen flex items-center px-6 lg:px-20 pt-20 overflow-hidden">
+        {/* Main Content Landmark */}
+        <main id="main-content">
+          {/* Hero Section */}
+          <section ref={heroRef} className="relative min-h-screen flex items-center px-6 lg:px-20 pt-20 overflow-hidden">
   <div className="max-w-[1600px] mx-auto w-full">
 
     <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
@@ -272,6 +229,10 @@ export default function App() {
         <img
           src="/ProfilePic.png"
           alt="Yuvateja Sainadh"
+          width={480}
+          height={480}
+          loading="eager"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       </div>
@@ -329,9 +290,9 @@ export default function App() {
           <div className="max-w-[1800px] mx-auto px-8 lg:px-24">
             <div className="flex flex-col md:flex-row justify-between items-end mb-32">
               <EditorialHeading 
-                tag="Case Studies" 
-                title="Selective Projects" 
-                subtitle="Turning complex logic into refined interfaces."
+                tag="Flagship Showcase" 
+                title="Featured Systems & Ventures." 
+                subtitle="Production AI architectures, intelligent applications, and scalable ventures."
               />
               <div className="hidden md:block pb-24 text-[10px] font-bold uppercase tracking-widest opacity-40">
                 SCROLL TO DISCOVER ({PROJECTS.length.toString().padStart(2, '0')})
@@ -380,198 +341,85 @@ export default function App() {
           </div>
         </section>
 
-        {/* Global Connections: Contact */}
-        <section id="contact" className="py-40 bg-grad-soft rounded-t-[4rem] px-8 lg:px-24 transition-colors duration-500">
-          <div className="max-w-[1800px] mx-auto">
-            <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 items-start">
+        {/* Global Connections: Contact Section */}
+        <ContactSection />
 
-  {/* LEFT SIDE */}
-  <div className="space-y-10">
+        {/* Global Footer */}
+        <footer role="contentinfo" className="border-t border-border pt-16 pb-10 px-6 lg:px-20 bg-grad-soft transition-colors duration-500">
+          <div className="max-w-[1400px] mx-auto flex flex-col gap-12">
+            {/* TOP SECTION */}
+            <div className="flex flex-col md:flex-row justify-between gap-12">
+              {/* LEFT - BRAND */}
+              <div className="space-y-4 max-w-sm">
+                <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                  Yuvateja Sainadh
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Building scalable web applications and AI-powered systems with a focus on performance and real-world impact.
+                </p>
+              </div>
 
-    <h2 className="text-5xl md:text-7xl lg:text-7xl font-bold tracking-tight leading-[0.9] text-foreground">
-      LET'S START
-      <br />
-      A{" "}
-      <span className="relative inline-block italic">
-        <span className="inline-block bg-grad-primary bg-clip-text text-transparent pr-4 md:pr-6 lg:pr-8">
-  CONVERSATION
-</span>
+              {/* CENTER - NAV LINKS */}
+              <div className="flex flex-col gap-4 text-sm">
+                <span className="font-semibold text-foreground uppercase tracking-wider">Navigation</span>
+                <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
+                <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+              </div>
 
-        {/* subtle underline glow */}
-        <span className="absolute left-0 -bottom-2 w-full h-[2px] bg-grad-primary opacity-40 blur-sm"></span>
-      </span>
-    </h2>
+              {/* RIGHT - SOCIAL */}
+              <div className="flex flex-col gap-4 text-sm">
+                <span className="font-semibold text-foreground uppercase tracking-wider">Connect</span>
 
-    <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
-      Have an idea, opportunity, or just want to connect?  
-      I’m always open to building meaningful and impactful systems.
-    </p>
+                <div className="flex gap-6">
+                  {SOCIAL_LINKS.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+                      title={link.name}
+                      aria-label={`Visit Yuvateja Sainadh on ${link.name} (opens in new tab)`}
+                    >
+                      {IconMap[link.icon]}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-    {/* CONTACT LINKS */}
-    <div className="space-y-4">
-      <a
-        href={`mailto:${PERSONAL_INFO.email}`}
-        className="group inline-block text-2xl md:text-3xl font-medium text-foreground/80"
-      >
-        <span className="relative">
-          {PERSONAL_INFO.email}
-          <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-primary group-hover:w-full transition-all duration-300"></span>
-        </span>
-      </a>
+            {/* DIVIDER */}
+            <div className="border-t border-border" />
 
-      <a
-        href={`tel:${PERSONAL_INFO.phone}`}
-        className="block text-lg text-muted-foreground hover:text-primary transition-colors"
-      >
-        {PERSONAL_INFO.phone}
-      </a>
-    </div>
+            {/* BOTTOM SECTION */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs uppercase tracking-widest text-muted-foreground">
+              {/* LEFT */}
+              <div className="flex gap-8">
+                <span className="cursor-pointer hover:text-primary transition-colors">
+                  Privacy Policy
+                </span>
+                <span className="cursor-pointer hover:text-primary transition-colors">
+                  Terms & Conditions
+                </span>
+              </div>
 
-  </div>
+              {/* CENTER */}
+              <div className="text-center text-xs md:text-sm text-muted-foreground tracking-wide">
+                Turning ideas into scalable systems —{' '}
+                <span className="text-foreground font-semibold">
+                  Yuvateja Sainadh
+                </span>
+              </div>
 
-  {/* RIGHT SIDE FORM */}
-  <div className="space-y-10">
-
-    <form className="space-y-8 group" onSubmit={e => e.preventDefault()}>
-
-      {/* INPUT FIELD */}
-      {[
-        { label: "Full Name", type: "text", placeholder: "John Doe" },
-        { label: "Email Address", type: "email", placeholder: "example@domain.com" },
-      ].map((field, i) => (
-        <div
-          key={i}
-          className="relative border-b border-border pb-4 focus-within:border-primary transition-all duration-300"
-        >
-          <label className="text-[10px] font-bold uppercase tracking-widest text-primary">
-            {field.label}
-          </label>
-
-          <input
-            type={field.type}
-            placeholder={field.placeholder}
-            className="w-full bg-transparent outline-none text-lg md:text-xl font-medium pt-2 h-10 text-foreground placeholder:text-muted-foreground/40"
-          />
-
-          {/* Focus Glow Line */}
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary group-focus-within:w-full transition-all duration-300"></span>
-        </div>
-      ))}
-
-      {/* TEXTAREA */}
-      <div className="relative border-b border-border pb-6 focus-within:border-primary transition-all duration-300">
-        <label className="text-[10px] font-bold uppercase tracking-widest text-primary">
-          Project Details
-        </label>
-
-        <textarea
-          placeholder="Tell me about your idea..."
-          className="w-full bg-transparent outline-none text-lg md:text-xl font-medium pt-2 resize-none h-24 text-foreground placeholder:text-muted-foreground/40"
-        />
-
-        <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-primary focus-within:w-full transition-all duration-300"></span>
-      </div>
-
-      {/* BUTTON */}
-      <Button
-        size="lg"
-        className="group relative w-full h-16 overflow-hidden rounded-none bg-grad-primary text-white text-[11px] font-black tracking-[0.3em] uppercase transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:shadow-primary/40"
-      >
-        <span className="relative z-10 flex items-center justify-center">
-          Dispatch Inquiry
-        </span>
-
-        {/* Shine Effect */}
-        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-white/10"></span>
-      </Button>
-
-    </form>
-
-  </div>
-</div>
-            
-            <footer className="mt-40 border-t border-border pt-16 pb-10 px-6 lg:px-20">
-
-  <div className="max-w-[1400px] mx-auto flex flex-col gap-12">
-
-    {/* TOP SECTION */}
-    <div className="flex flex-col md:flex-row justify-between gap-12">
-
-      {/* LEFT - BRAND */}
-      <div className="space-y-4 max-w-sm">
-        <h2 className="text-xl font-semibold tracking-tight text-foreground">
-          Yuvateja Sainadh
-        </h2>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Building scalable web applications and AI-powered systems with a focus on performance and real-world impact.
-        </p>
-      </div>
-
-      {/* CENTER - NAV LINKS */}
-      <div className="flex flex-col gap-4 text-sm">
-        <span className="font-semibold text-foreground uppercase tracking-wider">Navigation</span>
-        <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-        <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-        <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-      </div>
-
-      {/* RIGHT - SOCIAL */}
-      <div className="flex flex-col gap-4 text-sm">
-        <span className="font-semibold text-foreground uppercase tracking-wider">Connect</span>
-
-        <div className="flex gap-6">
-          {SOCIAL_LINKS.map((link, i) => (
-            <a
-              key={i}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
-              title={link.name}
-            >
-              {IconMap[link.icon]}
-            </a>
-          ))}
-        </div>
-      </div>
-
-    </div>
-
-    {/* DIVIDER */}
-    <div className="border-t border-border"></div>
-
-    {/* BOTTOM SECTION */}
-    <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs uppercase tracking-widest text-muted-foreground">
-
-      {/* LEFT */}
-      <div className="flex gap-8">
-        <span className="cursor-pointer hover:text-primary transition-colors">
-          Privacy Policy
-        </span>
-        <span className="cursor-pointer hover:text-primary transition-colors">
-          Terms & Conditions
-        </span>
-      </div>
-
-      {/* CENTER */}
-      <div className="text-center text-xs md:text-sm text-muted-foreground tracking-wide">
-  Turning ideas into scalable systems —{" "}
-  <span className="text-foreground font-semibold">
-    Yuvateja Sainadh
-  </span>
-</div>
-
-      {/* RIGHT */}
-      <div>
-       All Rights Reserved © {new Date().getFullYear()}
-      </div>
-
-    </div>
-
-  </div>
-</footer>
+              {/* RIGHT */}
+              <div>
+                All Rights Reserved © {new Date().getFullYear()}
+              </div>
+            </div>
           </div>
-        </section>
+        </footer>
+        </main>
       </div>
     </TooltipProvider>
   );

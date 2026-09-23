@@ -16,7 +16,7 @@ export const ThemeToggle = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={toggleTheme}
-      className="relative p-3 rounded-full bg-secondary/80 dark:bg-secondary/40 backdrop-blur-xl border border-border shadow-lg shadow-black/5 hover:border-primary transition-all focus:outline-none"
+      className="relative p-3 rounded-full bg-secondary/80 dark:bg-secondary/40 backdrop-blur-xl border border-border shadow-lg shadow-black/5 hover:border-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 cursor-pointer"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       <div className="relative w-6 h-6 flex items-center justify-center">

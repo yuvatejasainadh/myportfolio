@@ -68,7 +68,7 @@
     --secondary: #D4CDC3;
     --secondary-foreground: #1a1a1a;
     --muted: #D4CDC3;
-    --muted-foreground: #717171;
+    --muted-foreground: #525252;
     --accent: #00A19B;
     --accent-foreground: #ffffff;
     --destructive: oklch(0.577 0.245 27.325);
@@ -109,6 +109,20 @@
   html {
     @apply font-sans;
     }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 
   /* Standardized Gradient Utilities */
   .bg-grad-primary {

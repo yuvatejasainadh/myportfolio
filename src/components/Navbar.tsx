@@ -115,6 +115,7 @@ export const Navbar = () => {
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
         <motion.a 
           href="#"
+          aria-label="Yuvateja Sainadh Home"
           whileHover={{ scale: 1.05 }}
           className="relative group flex items-center gap-2"
         >
@@ -164,11 +165,12 @@ export const Navbar = () => {
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <a
-  href="/Yuvateja Sainadh Resume.pdf" // 🔥 replace with your file or drive link
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hidden lg:flex"
->
+              href="/Yuvateja Sainadh Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Yuvateja Sainadh Resume (PDF)"
+              className="hidden lg:flex"
+            >
   <Button
     size="sm"
     className="group relative rounded-full bg-grad-primary text-white px-6 gap-2 h-10 text-[10px] uppercase font-black tracking-widest 
@@ -199,6 +201,8 @@ export const Navbar = () => {
           <ThemeToggle />
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
             className="p-2 text-foreground relative z-50 overflow-hidden"
           >
             <AnimatePresence mode="wait">
@@ -278,11 +282,12 @@ export const Navbar = () => {
               className="mt-auto pb-20 space-y-8 text-center"
             >
               <a
-  href="/Yuvateja Sainadh Resume.pdf" // 🔥 replace with your actual resume path
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block"
->
+                href="/Yuvateja Sainadh Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Yuvateja Sainadh Resume (PDF)"
+                className="block"
+              >
   <Button
     className="group relative w-full h-16 rounded-2xl bg-grad-primary text-white text-sm font-bold uppercase tracking-widest shadow-xl shadow-primary/20 
     hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden"

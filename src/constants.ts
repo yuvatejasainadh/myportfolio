@@ -50,34 +50,72 @@ export const SKILLS = [
   },
 ];
 
-export const PROJECTS = [
+export interface ProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  role: string;
+  status: "flagship" | "parent-venture" | "ecosystem-product";
+  badge: string;
+  parentVenture?: string;
+  description: string;
+  capabilities?: string[];
+  tech: string[];
+  live?: string;
+  github?: string;
+  repoStatusText?: string;
+}
+
+export const PROJECTS: ProjectItem[] = [
   {
+    id: "voiceshield",
     title: "VoiceShield",
     category: "Applied AI / AI Security",
     role: "Applied AI Engineer & Systems Architect",
-    badge: "Flagship AI Security Project",
+    status: "flagship",
+    badge: "Independent Flagship Project",
     description: "Real-Time AI-Powered Voice Impersonation Detection, Prevention & Risk Assessment Framework.",
+    capabilities: [
+      "Real-time voice biometric and synthetic speech detection",
+      "Low-latency audio streaming and feature extraction pipeline",
+      "Dynamic risk assessment framework for audio impersonation threats",
+    ],
     tech: ["Python", "PyTorch", "FastAPI", "WebSockets", "Signal Processing", "AI Security"],
-    github: "#", // Pending link verification
+    repoStatusText: "Codebase Private • Verification Pending",
   },
   {
+    id: "dripzoid",
     title: "Dripzoid",
     category: "Full-Stack Product Engineering / Fashion Technology",
     role: "Co-Founder & Full-Stack Developer",
-    badge: "Parent Venture & Ecosystem",
+    status: "parent-venture",
+    badge: "Parent Fashion Tech Venture",
     description: "Fashion technology venture and full-stack e-commerce ecosystem.",
+    capabilities: [
+      "Full-stack e-commerce platform and scalable order management",
+      "Secure authentication, inventory pipelines, and automated processing",
+      "Parent ecosystem powering the AskDrip intelligent assistant",
+    ],
     tech: ["React", "Node.js", "PostgreSQL", "REST APIs", "Order Management"],
     live: "https://dripzoid.com",
-    github: "#", // Pending link verification
+    repoStatusText: "Proprietary Architecture",
   },
   {
+    id: "askdrip",
     title: "AskDrip",
     category: "Applied AI / Intelligent Fashion Systems",
     role: "Applied AI Developer",
+    status: "ecosystem-product",
     badge: "Part of the Dripzoid Ecosystem",
+    parentVenture: "Dripzoid",
     description: "AI-Powered Fashion Assistant developed within the Dripzoid ecosystem.",
+    capabilities: [
+      "Conversational recommendation engine tailored to user style profiles",
+      "Semantic product catalog search and intent parsing",
+      "Deep integration with Dripzoid catalog and customer experience",
+    ],
     tech: ["Python", "NLP", "LLM Integration", "React", "Node.js"],
-    github: "#", // Pending link verification
+    repoStatusText: "Integrated Venture Product",
   },
 ];
 
