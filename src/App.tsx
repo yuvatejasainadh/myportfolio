@@ -23,14 +23,14 @@ import {
   PERSONAL_INFO, 
   SOCIAL_LINKS, 
   SKILLS, 
-  PROJECTS, 
-  EDUCATION 
+  PROJECTS 
 } from './constants';
 import { Link } from "react-scroll";
 import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
 import { CompetitiveProgramming } from './components/CompetitiveProgramming';
 import { ProjectCard } from './components/ProjectCard';
+import { EducationSection } from './components/EducationSection';
 import { ContactSection } from './components/ContactSection';
 import { Navbar } from './components/Navbar';
 import { StaggeredWord } from './components/StaggeredWord';
@@ -314,35 +314,7 @@ export default function App() {
         <CompetitiveProgramming />
 
         {/* Experience & Intellectual Growth */}
-        <section id="education" className="py-60 px-8 lg:px-24">
-          <div className="max-w-[1800px] mx-auto">
-            <div className="max-w-4xl">
-              <EditorialHeading 
-                tag="Foundation" 
-                title="Education & Academic Background." 
-                subtitle="Rigorous foundations in Artificial Intelligence, Machine Learning, and Systems Engineering."
-              />
-              
-              <div className="space-y-12">
-                 {EDUCATION.map((edu, i) => (
-                   <motion.div 
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      className="p-10 border border-brand-beige-dark dark:border-white/10 bg-white/10 dark:bg-white/5 transition-colors max-w-2xl rounded-2xl"
-                   >
-                      <span className="text-[10px] font-black text-primary tracking-[0.2em]">{edu.year}</span>
-                      <h4 className="text-2xl font-bold mt-4 mb-2 text-foreground">{edu.degree}</h4>
-                      <p className="text-muted-foreground font-medium">{edu.institution}</p>
-                      <div className="mt-6 inline-flex items-center gap-2 px-3 py-1 bg-grad-primary text-white text-[10px] font-bold tracking-widest uppercase shadow-lg shadow-primary/10">
-                         CGPA: {edu.cgpa}
-                      </div>
-                   </motion.div>
-                 ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <EducationSection />
 
         {/* Global Connections: Contact Section */}
         <ContactSection />

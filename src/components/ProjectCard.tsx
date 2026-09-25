@@ -87,16 +87,62 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </span>
           </div>
 
-          {/* Project Title & Role */}
-          <div className="space-y-2">
+          {/* Project Title & Role / Meta */}
+          <div className="space-y-3">
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
             </div>
-            <p className="text-sm font-semibold tracking-wide text-muted-foreground">
-              Role: <span className="text-foreground font-bold">{project.role}</span>
-            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm font-semibold tracking-wide text-muted-foreground">
+              <p>
+                Role: <span className="text-foreground font-bold">{project.role}</span>
+              </p>
+              {project.projectStatus && (
+                <div className="flex items-center gap-2">
+                  <span className="hidden sm:inline text-border">•</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono tracking-wider font-semibold">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        project.projectStatus === "In Development"
+                          ? "bg-amber-500 animate-pulse"
+                          : "bg-emerald-500"
+                      }`}
+                    />
+                    <span className="text-foreground/90">{project.projectStatus}</span>
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Version History */}
+            {project.versions && project.versions.length > 0 && (
+              <div className="pt-1 space-y-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/80 block">
+                  Versions
+                </span>
+                <div className="space-y-1 text-xs font-mono">
+                  {project.versions.map((ver, vi) => (
+                    <div key={vi} className="flex flex-wrap items-center gap-2 text-muted-foreground">
+                      <span className="font-bold text-foreground">{ver.version}</span>
+                      <span className="text-border">•</span>
+                      <span>{ver.details}</span>
+                      <span className="text-border">•</span>
+                      <span
+                        className={`inline-flex items-center gap-1.5 font-semibold ${
+                          ver.isActive ? "text-primary" : "text-muted-foreground"
+                        }`}
+                      >
+                        {ver.isActive && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        )}
+                        {ver.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Description */}

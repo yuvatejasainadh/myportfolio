@@ -7,7 +7,7 @@ export const PERSONAL_INFO = {
   name: "Yuvateja Sainadh",
   role: "Applied AI Engineer & Systems Architect",
   tagline: "Engineering intelligent systems, distributed backend infrastructure, and production-grade architectures.",
-  email: "yuvatejasainadh2006@gmail.com",
+  email: "yuvatejasainadh.me@gmail.com",
   phone: "+91-9390942546",
   location: "Andhra Pradesh, India",
   summary: "Applied AI Engineer and Systems Architect focused on engineering intelligent systems, real-time AI security frameworks, and resilient backend architectures. Experienced in taking production-oriented technology from concept and design to deployment.",
@@ -50,6 +50,13 @@ export const SKILLS = [
   },
 ];
 
+export interface ProjectVersion {
+  version: string;
+  details: string;
+  status: string;
+  isActive?: boolean;
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
@@ -57,6 +64,8 @@ export interface ProjectItem {
   role: string;
   status: "flagship" | "parent-venture" | "ecosystem-product";
   badge: string;
+  projectStatus?: string;
+  versions?: ProjectVersion[];
   parentVenture?: string;
   description: string;
   capabilities?: string[];
@@ -74,6 +83,7 @@ export const PROJECTS: ProjectItem[] = [
     role: "Applied AI Engineer & Systems Architect",
     status: "flagship",
     badge: "Independent Flagship Project",
+    projectStatus: "In Development",
     description: "Real-Time AI-Powered Voice Impersonation Detection, Prevention & Risk Assessment Framework.",
     capabilities: [
       "Real-time voice biometric and synthetic speech detection",
@@ -90,6 +100,20 @@ export const PROJECTS: ProjectItem[] = [
     role: "Co-Founder & Full-Stack Developer",
     status: "parent-venture",
     badge: "Parent Fashion Tech Venture",
+    versions: [
+      {
+        version: "V1.0",
+        details: "React + Bubblewrap · Web & Mobile",
+        status: "Completed",
+        isActive: false,
+      },
+      {
+        version: "V2.0",
+        details: "Flutter",
+        status: "Ongoing / Releasing Soon",
+        isActive: true,
+      },
+    ],
     description: "Fashion technology venture and full-stack e-commerce ecosystem.",
     capabilities: [
       "Full-stack e-commerce platform and scalable order management",
@@ -108,6 +132,7 @@ export const PROJECTS: ProjectItem[] = [
     status: "ecosystem-product",
     badge: "Part of the Dripzoid Ecosystem",
     parentVenture: "Dripzoid",
+    projectStatus: "Completed",
     description: "AI-Powered Fashion Assistant developed within the Dripzoid ecosystem.",
     capabilities: [
       "Conversational recommendation engine tailored to user style profiles",
@@ -119,11 +144,25 @@ export const PROJECTS: ProjectItem[] = [
   },
 ];
 
-export const EDUCATION = [
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  cgpa: string;
+  year: string;
+  focus?: string[];
+}
+
+export const EDUCATION: EducationItem[] = [
   {
     degree: "B.Tech in Artificial Intelligence & Machine Learning",
     institution: "Aditya College of Engineering and Technology",
-    cgpa: "8.19",
+    cgpa: "8.31",
     year: "2024 – 2028",
+    focus: [
+      "Artificial Intelligence & Machine Learning",
+      "Data Structures & Algorithms",
+      "Distributed Systems & Cloud Computing",
+      "Database Engineering & Systems Design",
+    ],
   },
 ];
