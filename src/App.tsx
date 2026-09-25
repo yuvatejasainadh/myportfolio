@@ -326,9 +326,20 @@ export default function App() {
             <div className="flex flex-col md:flex-row justify-between gap-12">
               {/* LEFT - BRAND */}
               <div className="space-y-4 max-w-sm">
-                <h2 className="text-xl font-semibold tracking-tight text-foreground">
-                  Yuvateja Sainadh
-                </h2>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#0B1120] border border-white/15 flex items-center justify-center p-2 shrink-0 shadow-md shadow-black/25">
+                    <img
+                      src={PERSONAL_INFO.logo || "/logos/ys-logo.png"}
+                      alt={PERSONAL_INFO.logoAlt || "Yuvateja Sainadh logo"}
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                    {PERSONAL_INFO.name}
+                  </h2>
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Building scalable web applications and AI-powered systems with a focus on performance and real-world impact.
                 </p>

@@ -10,6 +10,8 @@ export const PERSONAL_INFO = {
   email: "yuvatejasainadh.me@gmail.com",
   phone: "+91-9390942546",
   location: "Andhra Pradesh, India",
+  logo: "/logos/ys-logo.png",
+  logoAlt: "Yuvateja Sainadh logo",
   summary: "Applied AI Engineer and Systems Architect focused on engineering intelligent systems, real-time AI security frameworks, and resilient backend architectures. Experienced in taking production-oriented technology from concept and design to deployment.",
 };
 
@@ -67,6 +69,8 @@ export interface ProjectItem {
   projectStatus?: string;
   versions?: ProjectVersion[];
   parentVenture?: string;
+  logo?: string;
+  logoAlt?: string;
   description: string;
   capabilities?: string[];
   tech: string[];
@@ -84,6 +88,8 @@ export const PROJECTS: ProjectItem[] = [
     status: "flagship",
     badge: "Independent Flagship Project",
     projectStatus: "In Development",
+    logo: "/logos/voiceshield-logo.png",
+    logoAlt: "VoiceShield logo",
     description: "Real-Time AI-Powered Voice Impersonation Detection, Prevention & Risk Assessment Framework.",
     capabilities: [
       "Real-time voice biometric and synthetic speech detection",
@@ -100,6 +106,8 @@ export const PROJECTS: ProjectItem[] = [
     role: "Co-Founder & Full-Stack Developer",
     status: "parent-venture",
     badge: "Parent Fashion Tech Venture",
+    logo: "/logos/dripzoid-logo.png",
+    logoAlt: "Dripzoid logo",
     versions: [
       {
         version: "V1.0",
@@ -133,6 +141,8 @@ export const PROJECTS: ProjectItem[] = [
     badge: "Part of the Dripzoid Ecosystem",
     parentVenture: "Dripzoid",
     projectStatus: "Completed",
+    logo: "/logos/askdrip-logo.png",
+    logoAlt: "AskDrip logo",
     description: "AI-Powered Fashion Assistant developed within the Dripzoid ecosystem.",
     capabilities: [
       "Conversational recommendation engine tailored to user style profiles",

@@ -89,7 +89,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
           {/* Project Title & Role / Meta */}
           <div className="space-y-3">
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {project.logo && (
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#0B1120] border border-white/15 flex items-center justify-center p-2.5 shrink-0 shadow-md shadow-black/25">
+                  <img
+                    src={project.logo}
+                    alt={project.logoAlt || `${project.title} logo`}
+                    width={56}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
               <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
