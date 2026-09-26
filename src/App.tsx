@@ -57,7 +57,7 @@ const EditorialHeading = ({ title, tag, subtitle }: { title: string; tag?: strin
         initial={{ opacity: 0, x: -10 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="block text-[#00A19B] font-bold tracking-[0.2em] text-xs uppercase mb-4"
+        className="block text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4"
       >
         {tag}
       </motion.span>
@@ -124,7 +124,7 @@ export default function App() {
 
   return (
     <TooltipProvider>
-      <div className="relative min-h-screen selection:bg-[#00A19B]/30 selection:text-brand-teal overflow-x-hidden bg-grad-soft transition-colors duration-500">
+      <div className="relative min-h-screen selection:bg-primary/25 selection:text-primary overflow-x-hidden bg-grad-soft transition-colors duration-500">
         <div className="theme-transition-gradient" />
         <Suspense fallback={null}>
           <Background3D />

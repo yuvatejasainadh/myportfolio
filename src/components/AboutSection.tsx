@@ -11,10 +11,10 @@ import { Cpu, Globe, Code, Zap } from 'lucide-react';
 
 export const AboutSection = () => {
   const highlights = [
-    { label: "Applied AI Systems", icon: <Cpu className="w-5 h-5 text-[#00A19B]" />, detail: "Real-Time AI Security & Intelligent Frameworks" },
-    { label: "Systems Architecture", icon: <Zap className="w-5 h-5 text-[#00A19B]" />, detail: "Scalable, Distributed & Event-Driven Backends" },
-    { label: "Full-Stack Engineering", icon: <Globe className="w-5 h-5 text-[#00A19B]" />, detail: "Production Systems from Concept to Deployment" },
-    { label: "Backend Infrastructure", icon: <Code className="w-5 h-5 text-[#00A19B]" />, detail: "Resilient APIs, Data Pipelines & Cloud Services" },
+    { label: "Applied AI Systems", icon: <Cpu className="w-5 h-5 text-primary" />, detail: "Real-Time AI Security & Intelligent Frameworks" },
+    { label: "Systems Architecture", icon: <Zap className="w-5 h-5 text-primary" />, detail: "Scalable, Distributed & Event-Driven Backends" },
+    { label: "Full-Stack Engineering", icon: <Globe className="w-5 h-5 text-primary" />, detail: "Production Systems from Concept to Deployment" },
+    { label: "Backend Infrastructure", icon: <Code className="w-5 h-5 text-primary" />, detail: "Resilient APIs, Data Pipelines & Cloud Services" },
   ];
 
   return (
@@ -62,7 +62,7 @@ export const AboutSection = () => {
           className="relative"
         >
           {/* Background Glow */}
-          <div className="absolute -inset-10 bg-[#00A19B]/5 blur-[100px] rounded-full" />
+          <div className="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
           
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
             {highlights.map((item, i) => (
@@ -74,8 +74,8 @@ export const AboutSection = () => {
                 <div className="mb-6 p-4 bg-white dark:bg-white/10 rounded-2xl w-fit shadow-sm group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-bold text-brand-charcoal dark:text-white mb-2 transition-colors">{item.label}</h4>
-                <p className="text-sm text-brand-gray dark:text-brand-bg/60 font-medium opacity-70 transition-colors">{item.detail}</p>
+                <h4 className="text-xl font-bold text-foreground mb-2 transition-colors">{item.label}</h4>
+                <p className="text-sm text-muted-foreground font-medium opacity-80 transition-colors">{item.detail}</p>
               </motion.div>
             ))}
           </div>

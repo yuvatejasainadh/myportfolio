@@ -33,7 +33,7 @@ export const CompetitiveProgramming = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -10, rotateZ: i % 2 === 0 ? 1 : -1 }}
-              className="group h-[350px] p-10 bg-white/60 dark:bg-[#111827]/70 border border-gray-200 dark:border-primary/20 rounded-[3rem] backdrop-blur-xl flex flex-col justify-between transition-all hover:bg-white/80 dark:hover:bg-[#111827]/90 hover:border-primary/50 shadow-lg shadow-black/5 dark:shadow-[0_0_40px_rgba(0,161,155,0.1)] relative overflow-hidden"
+              className="group h-[350px] p-10 bg-white/60 dark:bg-[#0A1222]/80 border border-border/80 dark:border-primary/20 rounded-[3rem] backdrop-blur-xl flex flex-col justify-between transition-all hover:bg-white/80 dark:hover:bg-[#0A1222] hover:border-primary/50 shadow-lg shadow-black/5 dark:shadow-[0_0_40px_rgba(0,138,245,0.15)] relative overflow-hidden"
             >
               {/* Card Hover Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

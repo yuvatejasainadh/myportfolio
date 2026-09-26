@@ -38,7 +38,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       <div
         className={`relative p-8 md:p-12 rounded-3xl backdrop-blur-xl transition-all duration-500 overflow-hidden ${
           isFlagship
-            ? "border-2 border-primary/40 bg-white/10 dark:bg-white/[0.07] shadow-[0_10px_50px_rgba(0,161,155,0.15)] hover:border-primary/70"
+            ? "border-2 border-primary/40 bg-white/10 dark:bg-white/[0.07] shadow-[0_10px_50px_rgba(0,138,245,0.15)] hover:border-primary/70"
             : "border border-border bg-white/5 dark:bg-white/5 hover:border-primary/30 hover:shadow-[0_10px_40px_rgba(0,0,0,0.12)]"
         } hover:-translate-y-2 hover:scale-[1.005]`}
       >

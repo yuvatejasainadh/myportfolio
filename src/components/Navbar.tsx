@@ -49,7 +49,7 @@ const MagneticLink = ({ children, href, onClick }: { children: React.ReactNode; 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: mouseXSpring, y: mouseYSpring }}
-      className="relative px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-brand-charcoal dark:text-brand-bg opacity-70 hover:opacity-100 transition-opacity group"
+      className="relative px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-foreground opacity-70 hover:opacity-100 transition-opacity group"
     >
       <span className="relative z-10">{children}</span>
       <motion.span 
@@ -71,15 +71,15 @@ export const Navbar = () => {
     scrollY, 
     [0, 100], 
     [
-      theme === 'light' ? 'rgba(228, 221, 211, 0)' : 'rgba(15, 23, 42, 0)', 
-      theme === 'light' ? 'rgba(228, 221, 211, 0.9)' : 'rgba(15, 23, 42, 0.9)'
+      theme === 'light' ? 'rgba(244, 247, 252, 0)' : 'rgba(5, 10, 20, 0)', 
+      theme === 'light' ? 'rgba(244, 247, 252, 0.9)' : 'rgba(5, 10, 20, 0.9)'
     ]
   );
   const navShadow = useTransform(scrollY, [0, 100], ['0 0 0 rgba(0,0,0,0)', '0 10px 30px -10px rgba(0,0,0,0.1)']);
   const navBorder = useTransform(
     scrollY, 
     [0, 100], 
-    ['rgba(0, 0, 0, 0)', theme === 'light' ? 'rgba(20, 20, 20, 0.1)' : 'rgba(255, 255, 255, 0.1)']
+    ['rgba(0, 0, 0, 0)', theme === 'light' ? 'rgba(20, 20, 20, 0.08)' : 'rgba(255, 255, 255, 0.08)']
   );
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export const Navbar = () => {
               className="h-9 md:h-10 w-auto object-contain relative z-10 transition-transform duration-300 group-hover:scale-105"
             />
             <motion.div 
-              className="absolute -inset-2 glow-teal rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute -inset-2 glow-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
               animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0, 0.5, 0],

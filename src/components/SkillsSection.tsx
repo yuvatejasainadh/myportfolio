@@ -43,7 +43,7 @@ export const SkillsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               whileHover={{ y: -8 }}
-              className="group relative p-10 bg-white/60 dark:bg-[#111827]/70 backdrop-blur-md rounded-[3rem] border border-gray-200 dark:border-primary/20 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-[#111827]/90 hover:border-primary/50 shadow-xl shadow-black/5 dark:shadow-none"
+              className="group relative p-10 bg-white/60 dark:bg-[#0A1222]/80 backdrop-blur-md rounded-[3rem] border border-border/80 dark:border-primary/20 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-[#0A1222] hover:border-primary/50 shadow-xl shadow-black/5 dark:shadow-none"
             >
               {/* Subtle Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />

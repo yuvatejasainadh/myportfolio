@@ -45,7 +45,7 @@ function Particles() {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#00A19B"
+          color="#008AF5"
           size={0.003}
           sizeAttenuation={true}
           depthWrite={false}
