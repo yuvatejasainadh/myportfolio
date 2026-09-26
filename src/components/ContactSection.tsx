@@ -148,17 +148,15 @@ export const ContactSection: React.FC = () => {
     setInquiryId('');
 
     try {
+      const payload = new URLSearchParams();
+      payload.append('fullName', formData.name.trim());
+      payload.append('email', formData.email.trim());
+      payload.append('subject', formData.subject.trim());
+      payload.append('message', formData.message.trim());
+
       const response = await fetch(CONTACT_API_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullName: formData.name.trim(),
-          email: formData.email.trim(),
-          subject: formData.subject.trim(),
-          message: formData.message.trim(),
-        }),
+        body: payload,
       });
 
       const data = await response.json();
