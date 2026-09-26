@@ -179,3 +179,6 @@ export const EDUCATION: EducationItem[] = [
     ],
   },
 ];
+
+export const CONTACT_API_URL =
+  "https://script.google.com/macros/s/AKfycbyWhOHCQlCIRi93Mj7dOTOk85qagRzghhIrFFP8YL2MbwWA02qIn5ycXiCKDpyBw20j/exec";

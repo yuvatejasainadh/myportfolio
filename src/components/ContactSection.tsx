@@ -4,9 +4,8 @@
  */
 
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { Button } from './ui/button';
-import { PERSONAL_INFO } from '../constants';
+import { PERSONAL_INFO, CONTACT_API_URL } from '../constants';
 import { 
   Send, 
   CheckCircle2, 
@@ -46,6 +45,7 @@ export const ContactSection: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<SubmissionState>('idle');
   const [statusMessage, setStatusMessage] = useState<string>('');
+  const [inquiryId, setInquiryId] = useState<string>('');
   const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
 
   const validateField = (name: keyof ContactFormData, value: string): string | undefined => {
@@ -142,48 +142,55 @@ export const ContactSection: React.FC = () => {
       return;
     }
 
-    // 4. Check EmailJS environment variables
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey || serviceId.includes('placeholder') || serviceId.includes('your_')) {
-      // Configuration is not set yet in environment
-      setStatus('error');
-      setStatusMessage('Email service is currently awaiting environment configuration. You can reach out directly via the direct email link.');
-      return;
-    }
-
-    // 5. Submit via EmailJS
+    // 4. Submit to Google Apps Script API endpoint
     setStatus('submitting');
     setStatusMessage('');
+    setInquiryId('');
 
     try {
-      const templateParams = {
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        subject: formData.subject.trim(),
-        message: formData.message.trim(),
-        timestamp: new Date().toLocaleString('en-US', { timeZoneName: 'short' }),
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-
-      setStatus('success');
-      setStatusMessage('Thank you for reaching out! Your message has been sent successfully. I will get back to you shortly.');
-      setLastSubmitTime(Date.now());
-      // Reset form on confirmed success
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        honeypot: '',
+      const response = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        }),
       });
-      setErrors({});
-    } catch (err: unknown) {
+
+      const data = await response.json();
+
+      if (data && data.success) {
+        setStatus('success');
+        setStatusMessage(data.message || 'Your inquiry has been dispatched successfully.');
+        if (data.inquiryId) {
+          setInquiryId(data.inquiryId);
+        }
+        setLastSubmitTime(Date.now());
+        // Reset form on confirmed success
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+          honeypot: '',
+        });
+        setErrors({});
+      } else {
+        setStatus('error');
+        setStatusMessage(
+          data?.message ||
+            'Unable to dispatch your inquiry right now. Please try again or contact me directly by email.'
+        );
+      }
+    } catch {
       setStatus('error');
-      setStatusMessage('Unable to send your message at this time. Your entered information has been preserved. Please try again or use the direct email link below.');
+      setStatusMessage(
+        'Unable to dispatch your inquiry right now. Please try again or contact me directly by email.'
+      );
     }
   };
 
@@ -278,6 +285,11 @@ export const ContactSection: React.FC = () => {
                   <div className="space-y-1">
                     <p className="font-bold text-sm">Message Dispatched</p>
                     <p className="text-xs leading-relaxed opacity-90">{statusMessage}</p>
+                    {inquiryId && (
+                      <p className="text-xs font-mono font-semibold tracking-wide text-emerald-700 dark:text-emerald-400 pt-1">
+                        Reference: {inquiryId}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <Button
@@ -287,8 +299,9 @@ export const ContactSection: React.FC = () => {
                   onClick={() => {
                     setStatus('idle');
                     setStatusMessage('');
+                    setInquiryId('');
                   }}
-                  className="text-xs border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                  className="text-xs border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
                   Send Another Message
@@ -499,18 +512,18 @@ export const ContactSection: React.FC = () => {
                 type="submit"
                 size="lg"
                 disabled={status === 'submitting'}
-                aria-label={status === 'submitting' ? 'Dispatching Inquiry...' : 'Dispatch Inquiry'}
+                aria-label={status === 'submitting' ? 'Dispatching...' : 'Dispatch Inquiry'}
                 className="group relative w-full h-16 overflow-hidden rounded-none bg-grad-primary text-white text-[11px] font-black tracking-[0.3em] uppercase transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:shadow-primary/40 disabled:opacity-70 disabled:hover:translate-y-0 disabled:cursor-not-allowed cursor-pointer"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {status === 'submitting' ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Dispatching Message...</span>
+                      <span>DISPATCHING...</span>
                     </>
                   ) : (
                     <>
-                      <span>Dispatch Inquiry</span>
+                      <span>DISPATCH INQUIRY</span>
                       <Send className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
