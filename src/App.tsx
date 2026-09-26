@@ -36,6 +36,7 @@ import { Navbar } from './components/Navbar';
 import { StaggeredWord } from './components/StaggeredWord';
 import { Button } from '@/components/ui/button';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { useTheme } from './components/ThemeContext';
 
 const Background3D = lazy(() => import('./components/Background3D'));
 
@@ -84,6 +85,7 @@ const EditorialHeading = ({ title, tag, subtitle }: { title: string; tag?: strin
 );
 
 export default function App() {
+  const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
   const heroRef = useRef(null);
 
@@ -327,15 +329,13 @@ export default function App() {
               {/* LEFT - BRAND */}
               <div className="space-y-4 max-w-sm">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#0B1120] border border-white/15 flex items-center justify-center p-2 shrink-0 shadow-md shadow-black/25">
-                    <img
-                      src={PERSONAL_INFO.logo || "/logos/ys-logo.png"}
-                      alt={PERSONAL_INFO.logoAlt || "Yuvateja Sainadh logo"}
-                      width={40}
-                      height={40}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+                  <img
+                    src={theme === 'dark' ? PERSONAL_INFO.logos.dark : PERSONAL_INFO.logos.light}
+                    alt={PERSONAL_INFO.logoAlt}
+                    width={36}
+                    height={36}
+                    className="h-8 md:h-9 w-auto object-contain"
+                  />
                   <h2 className="text-xl font-semibold tracking-tight text-foreground">
                     {PERSONAL_INFO.name}
                   </h2>

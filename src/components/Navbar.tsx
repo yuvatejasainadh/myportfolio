@@ -9,6 +9,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useTheme } from './ThemeContext';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from './ui/button';
+import { PERSONAL_INFO } from '../constants';
 
 const navItems = [
   { name: 'About', href: '#about' },
@@ -120,15 +121,13 @@ export const Navbar = () => {
           className="relative group flex items-center gap-3"
         >
           <div className="relative flex items-center">
-            <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-[#0B1120] border border-white/15 flex items-center justify-center p-2 shrink-0 shadow-md shadow-black/25 relative z-10">
-              <img
-                src="/logos/ys-logo.png"
-                alt="Yuvateja Sainadh logo"
-                width={44}
-                height={44}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <img
+              src={theme === 'dark' ? PERSONAL_INFO.logos.dark : PERSONAL_INFO.logos.light}
+              alt={PERSONAL_INFO.logoAlt}
+              width={40}
+              height={40}
+              className="h-9 md:h-10 w-auto object-contain relative z-10 transition-transform duration-300 group-hover:scale-105"
+            />
             <motion.div 
               className="absolute -inset-2 glow-teal rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
               animate={{

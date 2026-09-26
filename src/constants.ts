@@ -10,7 +10,10 @@ export const PERSONAL_INFO = {
   email: "yuvatejasainadh.me@gmail.com",
   phone: "+91-9390942546",
   location: "Andhra Pradesh, India",
-  logo: "/logos/ys-logo.png",
+  logos: {
+    light: "/logos/ys-logo-light.png",
+    dark: "/logos/ys-logo-dark.png",
+  },
   logoAlt: "Yuvateja Sainadh logo",
   summary: "Applied AI Engineer and Systems Architect focused on engineering intelligent systems, real-time AI security frameworks, and resilient backend architectures. Experienced in taking production-oriented technology from concept and design to deployment.",
 };
