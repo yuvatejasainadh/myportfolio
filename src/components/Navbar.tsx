@@ -12,11 +12,11 @@ import { Button } from './ui/button';
 import { PERSONAL_INFO } from '../constants';
 
 const navItems = [
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'CP', href: '#cp' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'CP', href: '/#cp' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const MagneticLink = ({ children, href, onClick }: { children: React.ReactNode; href: string; onClick?: () => void }) => {
@@ -115,7 +115,7 @@ export const Navbar = () => {
     >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
         <motion.a 
-          href="#"
+          href="/"
           aria-label="Yuvateja Sainadh Home"
           whileHover={{ scale: 1.05 }}
           className="relative group flex items-center gap-3"
