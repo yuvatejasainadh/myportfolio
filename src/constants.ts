@@ -21,7 +21,8 @@ export const PERSONAL_INFO = {
 export const SOCIAL_LINKS = [
   { name: "GitHub", url: "https://github.com/yuvatejasainadh", icon: "Github" },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/pala-yuvateja-sainadh-8848b8294/", icon: "Linkedin" },
-  { name: "LeetCode", url: "https://leetcode.com/u/yuvateja_003/", icon: "SiLeetcode" },
+  { name: "X", url: "https://x.com/Yuvateja_003", icon: "SiX" },
+  { name: "LeetCode", url: "https://leetcode.com/u/yuvateja_sainadh_/", icon: "SiLeetcode" },
   { name: "CodeChef", url: "https://www.codechef.com/users/yuvateja_003", icon: "SiCodechef" },
   { name: "HackerRank", url: "https://www.hackerrank.com/profile/yuvatejasainadh1", icon: "SiHackerRank" },
   { name: "Codeforces", url: "https://codeforces.com/profile/yuvateja_sainadh_", icon: "SiCodeforces" },

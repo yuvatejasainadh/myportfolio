@@ -45,15 +45,15 @@ export const EducationSection: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-40 px-8 lg:px-24 bg-grad-soft transition-colors duration-500">
+    <section id="education" className="py-24 sm:py-32 md:py-40 px-4 sm:px-6 md:px-8 lg:px-24 bg-grad-soft transition-colors duration-500 overflow-hidden">
       <div className="max-w-[1800px] mx-auto">
         {/* Section Header */}
-        <div className="mb-16 md:mb-20">
+        <div className="mb-12 sm:mb-16 md:mb-20">
           <motion.span
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="block text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4"
+            className="block text-primary font-bold tracking-[0.2em] text-xs uppercase mb-3 sm:mb-4"
           >
             Foundation
           </motion.span>
@@ -61,7 +61,7 @@ export const EducationSection: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] max-w-4xl text-foreground transition-colors"
+            className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-tight sm:leading-[0.95] max-w-4xl text-foreground transition-colors"
           >
             Education & <span className="bg-grad-primary bg-clip-text text-transparent italic">Academic Background.</span>
           </motion.h2>
@@ -70,14 +70,14 @@ export const EducationSection: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-muted-foreground text-xl md:text-2xl max-w-2xl font-medium leading-tight"
+            className="mt-4 sm:mt-6 text-muted-foreground text-base sm:text-xl md:text-2xl max-w-2xl font-medium leading-relaxed"
           >
             Rigorous foundations in Artificial Intelligence, Machine Learning, and Systems Engineering.
           </motion.p>
         </div>
 
         {/* Balanced Full-Width Two-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-stretch">
           
           {/* LEFT COLUMN: Main Degree Card & Highlights */}
           <motion.div
@@ -85,32 +85,32 @@ export const EducationSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 flex flex-col justify-between p-8 md:p-12 rounded-[2.5rem] bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-2xl relative overflow-hidden group hover:border-primary/40 transition-all duration-500"
+            className="lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 md:p-12 rounded-3xl md:rounded-[2.5rem] bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-white/60 dark:border-white/10 shadow-2xl relative overflow-hidden group hover:border-primary/40 transition-all duration-500"
           >
             {/* Background Glow Accent */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none group-hover:bg-primary/15 transition-all duration-500" />
 
-            <div className="relative z-10 space-y-8">
+            <div className="relative z-10 space-y-6 sm:space-y-8">
               {/* Header Badges: Year & CGPA */}
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-bold tracking-wider">
-                  <Calendar size={13} className="text-primary" />
+              <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+                <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] sm:text-xs font-mono font-bold tracking-wider">
+                  <Calendar size={13} className="text-primary shrink-0" />
                   <span>{edu.year}</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-grad-primary text-white text-xs font-bold tracking-widest uppercase rounded-full shadow-lg shadow-primary/20">
-                  <Sparkles size={13} />
+                <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 bg-grad-primary text-white text-[11px] sm:text-xs font-bold tracking-widest uppercase rounded-full shadow-lg shadow-primary/20">
+                  <Sparkles size={13} className="shrink-0" />
                   <span>CGPA: {edu.cgpa}</span>
                 </div>
               </div>
 
               {/* Degree Title & Institution */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  <GraduationCap size={16} />
+                  <GraduationCap size={16} className="shrink-0" />
                   <span>Undergraduate Degree</span>
                 </div>
-                <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground leading-tight">
+                <h3 className="text-xl sm:text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-tight">
                   {edu.degree}
                 </h3>
                 <div className="flex items-center gap-2 text-muted-foreground text-sm md:text-base font-medium">
@@ -125,14 +125,14 @@ export const EducationSection: React.FC = () => {
                   <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/80 block">
                     Core Coursework & Specializations
                   </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                     {edu.focus.map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-2.5 p-3 rounded-xl bg-white/50 dark:bg-white/5 border border-border/50 text-xs font-medium text-foreground/90"
+                        className="flex items-center gap-2 sm:gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white/50 dark:bg-white/5 border border-border/50 text-xs font-medium text-foreground/90"
                       >
                         <CheckCircle2 size={14} className="text-primary shrink-0" />
-                        <span>{item}</span>
+                        <span className="leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -141,7 +141,7 @@ export const EducationSection: React.FC = () => {
             </div>
 
             {/* Bottom Status / Summary Tag */}
-            <div className="mt-8 pt-6 border-t border-border/40 relative z-10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-border/40 relative z-10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-muted-foreground">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 Active Academic Progression
@@ -158,15 +158,15 @@ export const EducationSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col justify-between p-8 md:p-10 rounded-[2.5rem] bg-white/30 dark:bg-white/[0.04] backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-2xl relative overflow-hidden group hover:border-primary/30 transition-all duration-500"
+            className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-white/30 dark:bg-white/[0.04] backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-2xl relative overflow-hidden group hover:border-primary/30 transition-all duration-500"
           >
             {/* Background Glow */}
             <div className="absolute -inset-10 bg-primary/10 blur-[90px] rounded-full pointer-events-none" />
 
             {/* Top Visual Card Header */}
-            <div className="relative z-10 mb-6 flex items-center justify-between">
+            <div className="relative z-10 mb-4 sm:mb-6 flex items-center justify-between">
               <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-primary uppercase">
-                <BookOpen size={14} />
+                <BookOpen size={14} className="shrink-0" />
                 <span>Academic & Systems Core</span>
               </div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground/80">
@@ -175,8 +175,8 @@ export const EducationSection: React.FC = () => {
             </div>
 
             {/* Interactive / Animated AI & Academic Vector Graphic */}
-            <div className="relative z-10 my-4 flex items-center justify-center min-h-[220px]">
-              <div className="relative w-full max-w-[280px] aspect-square flex items-center justify-center">
+            <div className="relative z-10 my-4 flex items-center justify-center min-h-[200px] sm:min-h-[220px] overflow-hidden">
+              <div className="relative w-full max-w-[240px] xs:max-w-[260px] sm:max-w-[280px] aspect-square flex items-center justify-center">
                 {/* Outer Orbiting Ring */}
                 <motion.div
                   animate={{ rotate: 360 }}

@@ -113,7 +113,7 @@ export const Navbar = () => {
       }}
       className="fixed top-0 w-full z-50 border-b transition-[height] duration-500 backdrop-blur-md"
     >
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-12 h-full flex items-center justify-between">
         <motion.a 
           href="/"
           aria-label="Yuvateja Sainadh Home"
@@ -126,7 +126,7 @@ export const Navbar = () => {
               alt={PERSONAL_INFO.logoAlt}
               width={40}
               height={40}
-              className="h-9 md:h-10 w-auto object-contain relative z-10 transition-transform duration-300 group-hover:scale-105"
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain relative z-10 transition-transform duration-300 group-hover:scale-105"
             />
             <motion.div 
               className="absolute -inset-2 glow-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
@@ -204,13 +204,13 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-1.5 sm:gap-2 md:hidden">
           <ThemeToggle />
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
-            className="p-2 text-foreground relative z-50 overflow-hidden"
+            className="p-2 text-foreground relative z-50 overflow-hidden cursor-pointer"
           >
             <AnimatePresence mode="wait">
               {isMenuOpen ? (
@@ -240,25 +240,25 @@ export const Navbar = () => {
                 scale: 1,
                 y: 0,
                 transition: {
-                  duration: 0.6,
+                  duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],
-                  staggerChildren: 0.1,
-                  delayChildren: 0.2
+                  staggerChildren: 0.08,
+                  delayChildren: 0.15
                 }
               },
               closed: { 
                 opacity: 0, 
-                scale: 0.9,
-                y: -20,
+                scale: 0.95,
+                y: -15,
                 transition: {
-                  duration: 0.4,
+                  duration: 0.3,
                   ease: [0.16, 1, 0.3, 1]
                 }
               }
             }}
-            className="md:hidden absolute top-0 left-0 w-full h-screen bg-background/98 backdrop-blur-3xl px-8 pt-32 flex flex-col gap-12"
+            className="md:hidden fixed inset-0 w-full h-screen bg-background/98 backdrop-blur-3xl px-6 sm:px-8 pt-28 pb-12 flex flex-col justify-between overflow-y-auto z-40"
           >
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 sm:gap-8">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
@@ -268,14 +268,14 @@ export const Navbar = () => {
                   }}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-5xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors flex items-center justify-between group"
+                  className="text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tighter text-foreground hover:text-primary transition-colors flex items-center justify-between group py-1"
                 >
                   <span>{item.name}</span>
                   <motion.div
-                    whileHover={{ x: 10 }}
+                    whileHover={{ x: 6 }}
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <ArrowUpRight size={32} className="text-primary" />
+                    <ArrowUpRight size={28} className="text-primary" />
                   </motion.div>
                 </motion.a>
               ))}
@@ -286,7 +286,7 @@ export const Navbar = () => {
                 open: { opacity: 1, y: 0 },
                 closed: { opacity: 0, y: 20 }
               }}
-              className="mt-auto pb-20 space-y-8 text-center"
+              className="mt-8 pt-6 border-t border-border/40 space-y-6 text-center"
             >
               <a
                 href="/Yuvateja Sainadh Resume.pdf"
@@ -296,7 +296,7 @@ export const Navbar = () => {
                 className="block"
               >
   <Button
-    className="group relative w-full h-16 rounded-2xl bg-grad-primary text-white text-sm font-bold uppercase tracking-widest shadow-xl shadow-primary/20 
+    className="group relative w-full h-14 sm:h-16 rounded-2xl bg-grad-primary text-white text-xs sm:text-sm font-bold uppercase tracking-widest shadow-xl shadow-primary/20 
     hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
   >
     

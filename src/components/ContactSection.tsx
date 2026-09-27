@@ -199,36 +199,36 @@ export const ContactSection: React.FC = () => {
   )}`;
 
   return (
-    <section id="contact" className="py-40 bg-grad-soft rounded-t-[4rem] px-8 lg:px-24 transition-colors duration-500">
+    <section id="contact" className="py-24 sm:py-32 md:py-40 bg-grad-soft rounded-t-[2.5rem] sm:rounded-t-[4rem] px-4 sm:px-6 md:px-8 lg:px-24 transition-colors duration-500 overflow-hidden">
       <div className="max-w-[1800px] mx-auto">
-        <div className="grid lg:grid-cols-2 gap-24 lg:gap-32 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-32 items-start">
           
           {/* LEFT COLUMN: Narrative & Direct Channels */}
-          <div className="space-y-10">
-            <div className="space-y-4">
+          <div className="space-y-8 sm:space-y-10">
+            <div className="space-y-3 sm:space-y-4">
               <span className="block text-primary font-bold tracking-[0.2em] text-xs uppercase">
                 Direct Communication
               </span>
-              <h2 className="text-5xl md:text-7xl lg:text-7xl font-bold tracking-tight leading-[0.9] text-foreground">
+              <h2 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight sm:leading-[0.9] text-foreground">
                 LET'S START
                 <br />
                 A{' '}
                 <span className="relative inline-block italic">
-                  <span className="inline-block bg-grad-primary bg-clip-text text-transparent pr-4 md:pr-6 lg:pr-8">
+                  <span className="inline-block bg-grad-primary bg-clip-text text-transparent pr-2 sm:pr-4 md:pr-6 lg:pr-8">
                     CONVERSATION
                   </span>
                   {/* Subtle underline glow */}
-                  <span className="absolute left-0 -bottom-2 w-full h-[2px] bg-grad-primary opacity-40 blur-sm" />
+                  <span className="absolute left-0 -bottom-1 sm:-bottom-2 w-full h-[2px] bg-grad-primary opacity-40 blur-sm" />
                 </span>
               </h2>
             </div>
 
-            <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
+            <p className="text-muted-foreground max-w-md text-base sm:text-lg leading-relaxed">
               Have an idea, opportunity, or just want to connect? I’m always open to building meaningful and impactful systems.
             </p>
 
             {/* Direct Contact Links */}
-            <div className="space-y-4 pt-4">
+            <div className="space-y-4 pt-2 sm:pt-4">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary block mb-1">
                   Primary Email
@@ -236,7 +236,7 @@ export const ContactSection: React.FC = () => {
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
                   aria-label="Send email to Yuvateja Sainadh"
-                  className="group inline-block text-2xl md:text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors"
+                  className="group inline-block text-xl sm:text-2xl md:text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors break-all sm:break-normal"
                 >
                   <span className="relative">
                     {PERSONAL_INFO.email}
@@ -252,7 +252,7 @@ export const ContactSection: React.FC = () => {
                 <a
                   href={`tel:${PERSONAL_INFO.phone}`}
                   aria-label="Call Yuvateja Sainadh"
-                  className="block text-lg text-muted-foreground hover:text-primary transition-colors"
+                  className="block text-base sm:text-lg text-muted-foreground hover:text-primary transition-colors"
                 >
                   {PERSONAL_INFO.phone}
                 </a>
@@ -261,12 +261,12 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* RIGHT COLUMN: Functional Contact Form */}
-          <div className="space-y-8 bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-border/80 dark:border-white/10 rounded-3xl p-8 md:p-12 shadow-xl shadow-black/5 dark:shadow-none">
-            <div className="space-y-2">
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+          <div className="space-y-6 sm:space-y-8 bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-border/80 dark:border-white/10 rounded-3xl p-5 sm:p-8 md:p-12 shadow-xl shadow-black/5 dark:shadow-none">
+            <div className="space-y-1.5 sm:space-y-2">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                 Send an Inquiry
               </h3>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+              <p className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground font-semibold">
                 Direct Inquiries & Architecture Discussions
               </p>
             </div>

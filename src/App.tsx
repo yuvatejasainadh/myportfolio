@@ -17,7 +17,8 @@ import {
   SiCodechef,
   SiCodeforces,
   SiGeeksforgeeks,
-  SiHackerrank
+  SiHackerrank,
+  SiX
 } from "react-icons/si";
 import { TypeAnimation } from 'react-type-animation';
 import { 
@@ -44,6 +45,7 @@ const Background3D = lazy(() => import('./components/Background3D'));
 const IconMap: Record<string, React.ReactNode> = {
   Github: <Github className="w-5 h-5" />,
   Linkedin: <Linkedin className="w-5 h-5" />,
+  SiX: <SiX className="w-5 h-5" />,
   SiLeetcode: <SiLeetcode className="w-5 h-5" />,
   SiCodechef: <SiCodechef className="w-5 h-5" />,
   SiHackerRank: <SiHackerrank className="w-5 h-5" />,
@@ -70,36 +72,37 @@ const HomePage: React.FC = () => {
       {/* Main Content Landmark */}
       <main id="main-content">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative min-h-screen flex items-center px-6 lg:px-20 pt-20 overflow-hidden">
+        <section ref={heroRef} className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-20 pt-24 sm:pt-20 overflow-hidden">
           <div className="max-w-[1600px] mx-auto w-full">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
               {/* LEFT CONTENT */}
-              <div className="flex-1 space-y-10 text-center lg:text-left">
+              <div className="flex-1 space-y-8 sm:space-y-10 text-center lg:text-left w-full min-w-0">
                 {/* Availability Badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/40 dark:bg-white/10 backdrop-blur border border-white/40 dark:border-white/10 rounded-full text-[10px] font-bold tracking-widest uppercase text-primary"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 bg-white/40 dark:bg-white/10 backdrop-blur border border-white/40 dark:border-white/10 rounded-full text-[9px] sm:text-[10px] font-bold tracking-widest uppercase text-primary max-w-full truncate"
                 >
-                  <Zap size={10} className="animate-pulse" /> Applied AI & Systems Engineering
+                  <Zap size={10} className="animate-pulse shrink-0" /> 
+                  <span className="truncate">Applied AI & Systems Engineering</span>
                 </motion.div>
 
                 {/* HERO TITLE */}
-                <h1 className="flex flex-col leading-[0.85] font-bold tracking-tight text-foreground">
-                  <span className="text-5xl md:text-7xl lg:text-[9rem]">
+                <h1 className="flex flex-col leading-[0.88] font-bold tracking-tight text-foreground select-none">
+                  <span className="text-4xl xs:text-5xl sm:text-7xl lg:text-[9rem]">
                     <StaggeredWord text="VISION" delay={0.3} />
                   </span>
-                  <span className="text-5xl md:text-7xl lg:text-[9rem] bg-grad-primary bg-clip-text text-transparent italic">
+                  <span className="text-4xl xs:text-5xl sm:text-7xl lg:text-[9rem] bg-grad-primary bg-clip-text text-transparent italic">
                     <StaggeredWord text="DRIVEN" delay={0.8} />
                   </span>
-                  <span className="text-5xl md:text-7xl lg:text-[9rem]">
+                  <span className="text-4xl xs:text-5xl sm:text-7xl lg:text-[9rem]">
                     <StaggeredWord text="ENGINEER" delay={1.3} />
                   </span>
                 </h1>
 
                 {/* SUBTEXT + CTA */}
-                <div className="flex flex-col md:flex-row items-center lg:items-start gap-8">
-                  <p className="max-w-md text-lg md:text-xl text-muted-foreground font-medium leading-relaxed">
+                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
+                  <p className="max-w-md text-base sm:text-lg md:text-xl text-muted-foreground font-medium leading-relaxed">
                     <TypeAnimation
                       sequence={[
                         'Applied AI Engineer & Systems Architect building intelligent, production-ready systems.',
@@ -112,10 +115,10 @@ const HomePage: React.FC = () => {
                   <Button
                     size="lg"
                     onClick={handleScrollToProjects}
-                    className="group relative overflow-hidden rounded-none bg-grad-primary text-white px-8 h-14 transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 cursor-pointer"
+                    className="group relative overflow-hidden rounded-none bg-grad-primary text-white px-7 sm:px-8 h-12 sm:h-14 transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 cursor-pointer w-full sm:w-auto"
                   >
                     {/* Button Content */}
-                    <span className="flex items-center relative z-10">
+                    <span className="flex items-center justify-center relative z-10 text-xs sm:text-sm font-bold uppercase tracking-wider">
                       View Works
                       <ArrowUpRight
                         className="ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -133,11 +136,11 @@ const HomePage: React.FC = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="flex justify-center items-center"
+                className="flex justify-center items-center w-full lg:w-auto px-2 sm:px-0"
               >
-                <div className="relative w-[340px] md:w-[420px] lg:w-[480px]">
+                <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[380px] md:max-w-[420px] lg:max-w-[460px]">
                   {/* Frame Container */}
-                  <div className="bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+                  <div className="bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 sm:p-8 shadow-2xl">
                     {/* Image */}
                     <div className="w-full aspect-square rounded-2xl overflow-hidden">
                       <img
@@ -152,35 +155,35 @@ const HomePage: React.FC = () => {
                     </div>
 
                     {/* Name + Role */}
-                    <div className="mt-6 text-center">
-                      <h3 className="text-xl md:text-2xl font-semibold tracking-wide text-foreground">
+                    <div className="mt-5 sm:mt-6 text-center">
+                      <h3 className="text-lg sm:text-2xl font-semibold tracking-wide text-foreground">
                         Yuvateja Sainadh
                       </h3>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">
+                      <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1.5 sm:mt-2">
                         Applied AI Engineer & Systems Architect
                       </p>
                     </div>
                   </div>
 
                   {/* Subtle Background Frame Accent */}
-                  <div className="absolute -inset-3 rounded-3xl border border-primary/20 opacity-40"></div>
+                  <div className="absolute -inset-2 sm:-inset-3 rounded-3xl border border-primary/20 opacity-40 pointer-events-none"></div>
                 </div>
               </motion.div>
             </div>
 
             {/* FOOTER STRIP */}
-            <div className="mt-20 flex flex-col sm:flex-row justify-between items-center border-t border-border pt-6 gap-4 text-center sm:text-left">
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">
+            <div className="mt-14 sm:mt-20 flex flex-col sm:flex-row justify-between items-center border-t border-border pt-6 gap-4 text-center sm:text-left text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
+              <div>
                 Based in Andhra Pradesh, IN
               </div>
 
               <motion.div
-                animate={{ y: [0, 10, 0] }}
+                animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="hidden sm:block w-[1px] h-16 bg-foreground/20 opacity-20"
+                className="hidden sm:block w-[1px] h-12 bg-foreground/20 opacity-20"
               />
 
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">
+              <div>
                 Applied AI & Systems Architecture
               </div>
             </div>
@@ -240,14 +243,14 @@ const HomePage: React.FC = () => {
               {/* RIGHT - SOCIAL */}
               <div className="flex flex-col gap-4 text-sm">
                 <span className="font-semibold text-foreground uppercase tracking-wider">Connect</span>
-                <div className="flex gap-6">
+                <div className="flex flex-wrap gap-4 sm:gap-5">
                   {SOCIAL_LINKS.map((link, i) => (
                     <a
                       key={i}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+                      className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 p-1"
                       title={link.name}
                       aria-label={`Visit Yuvateja Sainadh on ${link.name} (opens in new tab)`}
                     >
@@ -262,9 +265,9 @@ const HomePage: React.FC = () => {
             <div className="border-t border-border" />
 
             {/* BOTTOM SECTION */}
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs uppercase tracking-widest text-muted-foreground">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 text-xs uppercase tracking-widest text-muted-foreground text-center sm:text-left">
               {/* LEFT */}
-              <div className="flex gap-8">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-6 sm:gap-8">
                 <span className="cursor-pointer hover:text-primary transition-colors">
                   Privacy Policy
                 </span>

@@ -96,7 +96,7 @@ export const ProjectDetailPage: React.FC = () => {
       {/* Global Navigation */}
       <Navbar />
 
-      <main className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-28 space-y-16">
+      <main className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-12 pt-24 sm:pt-32 pb-16 sm:pb-28 space-y-10 sm:space-y-16">
         {/* Top Breadcrumb / Back Link */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
@@ -105,9 +105,9 @@ export const ProjectDetailPage: React.FC = () => {
         >
           <Link
             to="/#projects"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors group py-1"
           >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300 shrink-0" />
             <span>Back to Projects</span>
           </Link>
         </motion.div>
@@ -117,13 +117,13 @@ export const ProjectDetailPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="p-8 sm:p-12 md:p-16 rounded-3xl bg-white/70 dark:bg-white/[0.04] border border-border/80 backdrop-blur-xl shadow-xl space-y-10"
+          className="p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-3xl bg-white/70 dark:bg-white/[0.04] border border-border/80 backdrop-blur-xl shadow-xl space-y-8 sm:space-y-10"
         >
           {/* Top Meta Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-8">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/60 pb-6 sm:pb-8">
+            <div className="flex items-center gap-3 sm:gap-4">
               {/* Logo Container */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#0B1120] border border-white/15 p-3 flex items-center justify-center shrink-0 shadow-lg shadow-black/25">
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-[#0B1120] border border-white/15 p-2.5 sm:p-3 flex items-center justify-center shrink-0 shadow-lg shadow-black/25">
                 <img
                   src={project.logo}
                   alt={project.logoAlt}
@@ -134,10 +134,10 @@ export const ProjectDetailPage: React.FC = () => {
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary block mb-1">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-primary block mb-0.5 sm:mb-1">
                   {project.category}
                 </span>
-                <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
+                <h1 className="text-2xl xs:text-3xl sm:text-5xl font-bold tracking-tight text-foreground">
                   {project.title}
                 </h1>
               </div>
@@ -145,7 +145,7 @@ export const ProjectDetailPage: React.FC = () => {
 
             {/* Status Badge */}
             <div
-              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider border ${badgeStyle.bg} ${badgeStyle.text} ${badgeStyle.border}`}
+              className={`inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider border self-start sm:self-auto shrink-0 ${badgeStyle.bg} ${badgeStyle.text} ${badgeStyle.border}`}
             >
               <span className={`w-2 h-2 rounded-full ${badgeStyle.dot}`} />
               <span>{project.status}</span>
@@ -153,17 +153,17 @@ export const ProjectDetailPage: React.FC = () => {
           </div>
 
           {/* Full Formal Title */}
-          <div className="space-y-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-muted-foreground block">
+          <div className="space-y-2.5 sm:space-y-4">
+            <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-muted-foreground block">
               Formal Architecture Title
             </span>
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground/90 leading-snug">
+            <p className="text-lg sm:text-2xl md:text-3xl font-semibold text-foreground/90 leading-snug break-words">
               {project.fullTitle}
             </p>
           </div>
 
           {/* Role & Ecosystem Context */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-border/50 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-4 border-t border-border/50 text-sm">
             <div className="space-y-1">
               <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground">
                 Engineering Role
@@ -195,10 +195,10 @@ export const ProjectDetailPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-6 sm:p-8 rounded-2xl bg-primary/5 dark:bg-primary/[0.04] border border-primary/20 backdrop-blur-sm space-y-3"
+            className="p-5 sm:p-8 rounded-2xl bg-primary/5 dark:bg-primary/[0.04] border border-primary/20 backdrop-blur-sm space-y-2.5 sm:space-y-3"
           >
             <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-primary">
-              <GitBranch size={15} />
+              <GitBranch size={15} className="shrink-0" />
               <span>Ecosystem Relationship</span>
             </div>
             <p className="text-foreground/90 text-sm sm:text-base font-medium leading-relaxed">
@@ -212,16 +212,16 @@ export const ProjectDetailPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-foreground">
+            <span className="w-6 h-[2px] bg-primary shrink-0" />
+            <h2 className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-foreground">
               About the Project
             </h2>
           </div>
-          <div className="p-8 sm:p-10 rounded-3xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl">
-            <p className="text-base sm:text-lg text-muted-foreground font-medium leading-relaxed">
+          <div className="p-6 sm:p-10 rounded-2xl sm:rounded-3xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl">
+            <p className="text-sm sm:text-lg text-muted-foreground font-medium leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -232,19 +232,19 @@ export const ProjectDetailPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-foreground">
+            <span className="w-6 h-[2px] bg-primary shrink-0" />
+            <h2 className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-foreground">
               Technology Stack
             </h2>
           </div>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap gap-2 sm:gap-2.5">
             {project.tech.map((technology) => (
               <span
                 key={technology}
-                className="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-xl border border-border bg-white/70 dark:bg-white/5 text-foreground shadow-sm hover:border-primary/60 hover:text-primary transition-all duration-300"
+                className="px-3.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider rounded-xl border border-border bg-white/70 dark:bg-white/5 text-foreground shadow-sm hover:border-primary/60 hover:text-primary transition-all duration-300"
               >
                 {technology}
               </span>
@@ -257,22 +257,22 @@ export const ProjectDetailPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-foreground">
+            <span className="w-6 h-[2px] bg-primary shrink-0" />
+            <h2 className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-foreground">
               Key Features & Architectural Highlights
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {project.highlights.map((highlight, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl flex items-start gap-3.5"
+                className="p-5 sm:p-6 rounded-2xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl flex items-start gap-3"
               >
-                <CheckCircle2 size={18} className="text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-foreground leading-relaxed">
+                <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-foreground leading-relaxed">
                   {highlight}
                 </span>
               </div>
@@ -285,22 +285,22 @@ export const ProjectDetailPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
         >
           <div className="flex items-center gap-3">
-            <span className="w-6 h-[2px] bg-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold uppercase tracking-wider text-foreground">
+            <span className="w-6 h-[2px] bg-primary shrink-0" />
+            <h2 className="text-lg sm:text-2xl font-bold uppercase tracking-wider text-foreground">
               Project Access & Links
             </h2>
           </div>
-          <div className="p-8 rounded-3xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl flex flex-wrap items-center gap-4">
+          <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 dark:bg-white/[0.03] border border-border/80 backdrop-blur-xl flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             {/* Live Deployment Link (Only if verified URL exists) */}
             {project.live ? (
               <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-grad-primary text-white text-xs font-bold tracking-widest uppercase shadow-md shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-grad-primary text-white text-xs font-bold tracking-widest uppercase shadow-md shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
               >
                 <ExternalLink size={15} />
                 <span>Visit Live Platform</span>
@@ -314,7 +314,7 @@ export const ProjectDetailPage: React.FC = () => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border bg-white/70 dark:bg-white/5 text-xs font-bold tracking-widest uppercase text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-border bg-white/70 dark:bg-white/5 text-xs font-bold tracking-widest uppercase text-foreground hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto"
               >
                 <Github size={16} />
                 <span>Source Code</span>
@@ -324,8 +324,8 @@ export const ProjectDetailPage: React.FC = () => {
 
             {/* Proprietary / In-Development Notice */}
             {!project.live && (!project.github || project.github === "#") && (
-              <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/50 dark:bg-white/5 border border-border text-xs font-mono font-semibold text-muted-foreground">
-                <Lock size={14} className="text-primary/70" />
+              <div className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white/50 dark:bg-white/5 border border-border text-xs font-mono font-semibold text-muted-foreground w-full sm:w-auto text-center">
+                <Lock size={14} className="text-primary/70 shrink-0" />
                 <span>{project.repoStatusText || "Proprietary Architecture"}</span>
               </div>
             )}
@@ -333,12 +333,12 @@ export const ProjectDetailPage: React.FC = () => {
         </motion.section>
 
         {/* Bottom Back Navigation */}
-        <div className="pt-12 border-t border-border/60 flex items-center justify-between">
+        <div className="pt-8 sm:pt-12 border-t border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <Link
             to="/#projects"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors group py-1"
           >
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300 shrink-0" />
             <span>Back to Projects</span>
           </Link>
 

@@ -17,17 +17,17 @@ export const ProjectDirectory: React.FC = () => {
     <section
       id="projects"
       aria-label="Project Directory"
-      className="py-32 md:py-40 bg-grad-soft text-foreground dark:text-white rounded-t-[3rem] xl:rounded-t-[6rem] transition-colors duration-500 border-t border-border/40"
+      className="py-24 sm:py-32 md:py-40 bg-grad-soft text-foreground dark:text-white rounded-t-[2.5rem] sm:rounded-t-[3rem] xl:rounded-t-[6rem] transition-colors duration-500 border-t border-border/40 overflow-hidden"
     >
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
-          <div className="space-y-4 max-w-3xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-14 sm:mb-20">
+          <div className="space-y-3 sm:space-y-4 max-w-3xl">
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-[11px] uppercase tracking-widest font-bold"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-mono text-[10px] sm:text-[11px] uppercase tracking-widest font-bold"
             >
               <Sparkles size={12} />
               <span>Project Directory</span>
@@ -37,7 +37,7 @@ export const ProjectDirectory: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.05]"
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground leading-tight sm:leading-[1.05]"
             >
               Curated Systems & Ventures.
             </motion.h2>
@@ -47,7 +47,7 @@ export const ProjectDirectory: React.FC = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="text-muted-foreground text-lg sm:text-xl font-medium leading-relaxed"
+              className="text-muted-foreground text-base sm:text-lg md:text-xl font-medium leading-relaxed"
             >
               Explore dedicated technical breakdowns across AI cybersecurity, next-gen fashion technology, and distributed automation backends.
             </motion.p>
